@@ -2,11 +2,25 @@
 
 <html ng-app="geektic">
     <head>
+     	<meta charset="UTF-8"> 
         <title>Geektic</title>
+        <link rel="stylesheet" type="text/css" href="/template/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="/template/css/components.css" />
     </head>
     <body ng-controller="HelloCtrl">
-        <h1>{{ helloMessage.message }}</h1>
-
+    
+	    <div id="around">
+	    	<div id="header">
+	    		<h1>{{ helloMessage.message }}</h1>
+	    	</div>
+	    	
+	    	
+			<div id="content">
+				<div id="userList" ng-view></div>
+			</div>
+			
+		</div>
+		
         <script src="/js/angular.js"></script>
         <script src="/js/angular-route.js"></script>
         <script src="/js/app.js"></script>
