@@ -1,0 +1,23 @@
+/* tables */
+table.DataTable
+{
+	background-color: #DDEEFF;
+	border: 1px #DDDDFF solid;
+	margin: 10px;
+	padding: 10px;
+	border-collapse: collapse;
+}
+
+table.DataTable td,th
+{
+	padding:10px;
+} 
+
+.DataTable tr:nth-child(odd)
+{
+	background-color: #DDEEFF;
+}
+.DataTable tr:nth-child(even)
+{
+	background-color: #EEEEFF;
+}

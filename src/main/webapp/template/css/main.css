@@ -1,0 +1,29 @@
+/* Main parts */
+
+body
+{
+	background-color: #FFF;
+	margin: auto;
+	text-familly: Arial;
+}
+
+#around
+{
+	margin: auto;
+	margin-top: 20px;
+	width: 70%;
+	padding: 20px;
+	background-color: #BBDDFF;
+	border: 1px #EEEEEE solid;
+	border-radius: 20px;
+}
+
+#header
+{
+	
+}
+
+#header h1
+{
+	color: #EFFFFF;
+}
