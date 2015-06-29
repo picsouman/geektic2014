@@ -1,5 +1,6 @@
 package com.ninja_squad.geektic.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -20,8 +21,8 @@ public class Hobbie {
 	
 	@ManyToMany
 	@JoinTable(name = "UserHobbies",
-				joinColumns={@JoinColumn(name = "IdKeyHobbie", referencedColumnName = "IdKey")},
-				inverseJoinColumns={@JoinColumn(name = "IdKeyUser", referencedColumnName = "IdKey")})
+				joinColumns=@JoinColumn(name = "IdKeyHobbie", referencedColumnName = "IdKey"),
+				inverseJoinColumns=@JoinColumn(name = "IdKeyUser", referencedColumnName = "IdKey"))
 	private List<User> _users;
 
 
@@ -30,7 +31,7 @@ public class Hobbie {
 	 */
 	public Hobbie()
 	{
-		
+		_users = new ArrayList<User>();
 	}
 	
 	

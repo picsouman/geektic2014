@@ -1,15 +1,18 @@
 package com.ninja_squad.geektic.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import com.ninja_squad.dbsetup.DbSetup;
 import com.ninja_squad.dbsetup.Operations;
 import com.ninja_squad.dbsetup.operation.Operation;
+import com.ninja_squad.geektic.models.Hobbie;
 import com.ninja_squad.geektic.models.User;
 import com.ninja_squad.geektic.models.enums.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 
@@ -44,5 +47,14 @@ public class UserDAOTest extends BaseDaoTest {
         List<User> list = dao.findByName("er");
         Assert.notNull(list);
         Assert.isTrue(list.size() == 2);
+    }
+    
+    @Test
+    @Transactional
+    public void testUserHobbies()
+    {
+    	User u = dao.findById((long) 0);
+    	List<Hobbie> list = u.getUserHobbies();
+    	Assert.isTrue(list.size() == 3);
     }
 }

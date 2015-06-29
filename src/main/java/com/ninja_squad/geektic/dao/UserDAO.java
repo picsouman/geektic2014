@@ -88,7 +88,7 @@ public class UserDAO {
 	{
 		try
 		{
-			
+			return null;
 		}
 		catch(Exception ex)
 		{
