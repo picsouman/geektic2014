@@ -1,3 +1,5 @@
+@set GRADLE_USER_HOME=F:\gradleCommun
+@set JAVA_HOME=C:\Program Files\Java\jdk1.8.0_20
 @if "%DEBUG%" == "" @echo off
 @rem ##########################################################################
 @rem
