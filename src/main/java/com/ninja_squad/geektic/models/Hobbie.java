@@ -1,5 +1,7 @@
 package com.ninja_squad.geektic.models;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +18,13 @@ public class Hobbie {
 	@Column(name = "Description")
 	private String _description;
 	
+	@ManyToMany
+	@JoinTable(name = "UserHobbies",
+				joinColumns={@JoinColumn(name = "IdKeyHobbie", referencedColumnName = "IdKey")},
+				inverseJoinColumns={@JoinColumn(name = "IdKeyUser", referencedColumnName = "IdKey")})
+	private List<User> _users;
+
+
 	/**
 	 * Default constructor
 	 */
@@ -48,5 +57,9 @@ public class Hobbie {
 
 	public void setDescription(String _description) {
 		this._description = _description;
+	}
+	
+	public List<User> getUsers() {
+		return _users;
 	}
 }

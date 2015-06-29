@@ -41,6 +41,9 @@ public class User {
 	private boolean _userShowEmail;
 
 	@ManyToMany
+	@JoinTable(name = "UserHobbies",
+				joinColumns={@JoinColumn(name = "IdKeyUser", referencedColumnName = "IdKey")},
+				inverseJoinColumns={@JoinColumn(name = "IdKeyHobbie", referencedColumnName = "IdKey")})
 	private List<Hobbie> _userHobbies;
 
 

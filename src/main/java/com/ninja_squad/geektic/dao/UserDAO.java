@@ -5,6 +5,7 @@ import java.util.*;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import com.ninja_squad.geektic.models.Hobbie;
 import com.ninja_squad.geektic.models.User;
 
 public class UserDAO {
@@ -68,6 +69,26 @@ public class UserDAO {
 			Query q = _em.createQuery("SELECT u FROM User u WHERE Lower(UserName) LIKE :name");
 			q.setParameter("name", "%" + name.toLowerCase() + "%");
 			return q.getResultList();
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return new ArrayList<User>();
+		}
+	}
+	
+	public List<User> findByHobbies(Hobbie h)
+	{
+		List<Hobbie> list = new ArrayList<Hobbie>();
+		list.add(h);
+		return findByHobbies(list);
+	}
+	
+	public List<User> findByHobbies(List<Hobbie> list)
+	{
+		try
+		{
+			
 		}
 		catch(Exception ex)
 		{
