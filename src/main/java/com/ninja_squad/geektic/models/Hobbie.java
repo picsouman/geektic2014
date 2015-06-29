@@ -7,6 +7,7 @@ public class Hobbie {
 	
 	// FIELDS
 	@Id
+	@Column(name = "IdKey")
 	private long _idKey;
 	
 	@Column(name = "Label")

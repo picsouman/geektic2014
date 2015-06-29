@@ -13,6 +13,7 @@ public class User {
 	
 	// FIELDS
 	@Id
+	@Column(name = "IdKey")
 	private long _idKey;
 	
 	@Column(name = "UserName")
@@ -21,15 +22,15 @@ public class User {
 	@Column(name = "UserEmail")
 	private String _userEmail;
 	
-	@Column
+	@Column(name = "UserState")
 	@Enumerated(EnumType.STRING)
 	private UserState _userState;
 	
-	@Column
+	@Column(name = "UserGroup")
 	@Enumerated(EnumType.STRING)
 	private UserGroup _userGroup;
 	
-	@Column
+	@Column(name = "UserSex")
 	@Enumerated(EnumType.STRING)
 	private UserSex _userSex;
 	
