@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ninja_squad.geektic.models.enums.UserGroup;
 import com.ninja_squad.geektic.models.enums.UserSex;
 import com.ninja_squad.geektic.models.enums.UserState;
@@ -15,37 +16,37 @@ public class User {
 	// FIELDS
 	@Id
 	@Column(name = "IdKey")
-	private long _idKey;
+	private long idKey;
 	
 	@Column(name = "UserName")
-	private String _userName;
+	private String userName;
 	
 	@Column(name = "UserEmail")
-	private String _userEmail;
+	private String userEmail;
 	
 	@Column(name = "UserState")
 	@Enumerated(EnumType.STRING)
-	private UserState _userState;
+	private UserState userState;
 	
 	@Column(name = "UserGroup")
 	@Enumerated(EnumType.STRING)
-	private UserGroup _userGroup;
+	private UserGroup userGroup;
 	
 	@Column(name = "UserSex")
 	@Enumerated(EnumType.STRING)
-	private UserSex _userSex;
+	private UserSex userSex;
 	
 	@Column(name = "UserAge")
-	private int _userAge;
+	private int userAge;
 	
 	@Column(name = "UserShowEmail")
-	private boolean _userShowEmail;
+	private boolean userShowEmail;
 
 	@ManyToMany
 	@JoinTable(name = "UserHobbies",
 				joinColumns=@JoinColumn(name = "IdKeyUser"),
 				inverseJoinColumns=@JoinColumn(name = "IdKeyHobbie"))
-	private List<Hobbie> _userHobbies;
+	private List<Hobbie> userHobbies;
 
 
 
@@ -54,75 +55,75 @@ public class User {
 	 */
 	public User()
 	{
-		_userHobbies = new ArrayList<Hobbie>();
+		
 	}
 	
 	
 	// AUTO-GENERATION
 	public long getIdKey() {
-		return _idKey;
+		return idKey;
 	}
 
 	public void setIdKey(long _idKey) {
-		this._idKey = _idKey;
+		this.idKey = _idKey;
 	}
 
 	public String getUserName() {
-		return _userName;
+		return userName;
 	}
 
 	public void setUserName(String _userName) {
-		this._userName = _userName;
+		this.userName = _userName;
 	}
 
 	public String getUserEmail() {
-		return getUserShowEmail() ? _userEmail : ".....";
+		return getUserShowEmail() ? userEmail : ".....";
 	}
 
 	public void setUserEmail(String _userEmail) {
-		this._userEmail = _userEmail;
+		this.userEmail = _userEmail;
 	}
 
 	public UserState getUserState() {
-		return _userState;
+		return userState;
 	}
 
 	public void setUserState(UserState _userState) {
-		this._userState = _userState;
+		this.userState = _userState;
 	}
 
 	public UserGroup getUserGroup() {
-		return _userGroup;
+		return userGroup;
 	}
 
 	public void setUserGroup(UserGroup _userGroup) {
-		this._userGroup = _userGroup;
+		this.userGroup = _userGroup;
 	}
 
 	public UserSex getUserSex() {
-		return _userSex;
+		return userSex;
 	}
 
 	public void setUserSex(UserSex _userSex) {
-		this._userSex = _userSex;
+		this.userSex = _userSex;
 	}
 
 	public int getUserAge() {
-		return _userAge;
+		return userAge;
 	}
 
 	public void setUserAge(int _userAge) {
-		this._userAge = _userAge;
+		this.userAge = _userAge;
 	}
 	public boolean getUserShowEmail() {
-		return _userShowEmail;
+		return userShowEmail;
 	}
 
 	public void setUserShowEmail(boolean _userShowEmail) {
-		this._userShowEmail = _userShowEmail;
+		this.userShowEmail = _userShowEmail;
 	}
 	
 	public List<Hobbie> getUserHobbies() {
-		return _userHobbies;
+		return userHobbies;
 	}
 }

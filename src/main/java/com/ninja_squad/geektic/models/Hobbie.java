@@ -5,25 +5,28 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Hobbie {
 	
 	// FIELDS
 	@Id
 	@Column(name = "IdKey")
-	private long _idKey;
+	private long idKey;
 	
 	@Column(name = "Label")
-	private String _label;
+	private String label;
 	
 	@Column(name = "Description")
-	private String _description;
+	private String description;
 	
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "UserHobbies",
 				joinColumns=@JoinColumn(name = "IdKeyHobbie", referencedColumnName = "IdKey"),
 				inverseJoinColumns=@JoinColumn(name = "IdKeyUser", referencedColumnName = "IdKey"))
-	private List<User> _users;
+	private List<User> users;
 
 
 	/**
@@ -31,36 +34,36 @@ public class Hobbie {
 	 */
 	public Hobbie()
 	{
-		_users = new ArrayList<User>();
+		
 	}
 	
 	
 	// AUTO-GENERATION
 	public long getIdKey() {
-		return _idKey;
+		return idKey;
 	}
 
 	public void setIdKey(long _idKey) {
-		this._idKey = _idKey;
+		this.idKey = _idKey;
 	}
 
 	public String getLabel() {
-		return _label;
+		return label;
 	}
 
 	public void setLabel(String _label) {
-		this._label = _label;
+		this.label = _label;
 	}
 
 	public String getDescription() {
-		return _description;
+		return description;
 	}
 
 	public void setDescription(String _description) {
-		this._description = _description;
+		this.description = _description;
 	}
 	
 	public List<User> getUsers() {
-		return _users;
+		return users;
 	}
 }

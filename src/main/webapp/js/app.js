@@ -5,7 +5,3 @@ app.controller('HelloCtrl', function($scope, $http) {
         $scope.helloMessage = helloMessage;
     });
 });
-
-app.controller('/', function($scope, $http) {
-	$http.get()
-});

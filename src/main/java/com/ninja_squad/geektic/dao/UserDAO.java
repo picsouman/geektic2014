@@ -3,14 +3,23 @@ package com.ninja_squad.geektic.dao;
 import java.util.*;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Repository;
 
 import com.ninja_squad.geektic.models.Hobbie;
 import com.ninja_squad.geektic.models.User;
 
+@Repository
 public class UserDAO {
 	
-	private EntityManager _em = null;
+	@PersistenceContext
+	private EntityManager em;
+	
+	public UserDAO() {}
 	
 	/**
 	 * Constructor
@@ -18,7 +27,7 @@ public class UserDAO {
 	 */
 	public UserDAO(EntityManager em)
 	{
-		_em = em;
+		this.em = em;
 	}
 	
 	/**
@@ -27,16 +36,8 @@ public class UserDAO {
 	 */
 	public List<User> findAll()
 	{
-		try
-		{
-			Query q = _em.createQuery("SELECT u FROM User u");
-			return q.getResultList();
-		}
-		catch(Exception ex)
-		{
-			ex.printStackTrace();
-			return new ArrayList<User>();
-		}
+		Query q = em.createQuery("SELECT u FROM User u");
+		return q.getResultList();
 	}
 	
 	/**
@@ -46,15 +47,7 @@ public class UserDAO {
 	 */
 	public User findById(Long id)
 	{
-		try
-		{
-			return _em.find(User.class, id);
-		}
-		catch(Exception ex)
-		{
-			ex.printStackTrace();
-			return null;
-		}
+		return em.find(User.class, id);
 	}
 	
 	/**
@@ -64,17 +57,9 @@ public class UserDAO {
 	 */
 	public List<User> findByName(String name)
 	{
-		try
-		{
-			Query q = _em.createQuery("SELECT u FROM User u WHERE Lower(UserName) LIKE :name");
-			q.setParameter("name", "%" + name.toLowerCase() + "%");
-			return q.getResultList();
-		}
-		catch(Exception ex)
-		{
-			ex.printStackTrace();
-			return new ArrayList<User>();
-		}
+		Query q = em.createQuery("SELECT u FROM User u WHERE Lower(UserName) LIKE :name");
+		q.setParameter("name", "%" + name.toLowerCase() + "%");
+		return q.getResultList();
 	}
 	
 	public List<User> findByHobbies(Hobbie h)
@@ -86,14 +71,11 @@ public class UserDAO {
 	
 	public List<User> findByHobbies(List<Hobbie> list)
 	{
-		try
-		{
-			return null;
-		}
-		catch(Exception ex)
-		{
-			ex.printStackTrace();
-			return new ArrayList<User>();
-		}
+		List<User> data = new ArrayList<User>();
+		for(Hobbie h : list)
+			for(User u : h.getUsers())
+				if(data.stream().allMatch(e -> e.getIdKey() != u.getIdKey()))
+					data.add(u);
+		return data;
 	}
 }

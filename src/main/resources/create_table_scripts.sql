@@ -20,6 +20,7 @@ CREATE TABLE User (
 CREATE TABLE UserVisit (
 	IdKey bigint identity primary key not null,
 	IdKeyUser bigint not null,
+	GuestIP varchar(15) default null,
 	Date timestamp default NOW not null,
 	constraint fk_uservisit_user foreign key (IdKeyUser) references User(IdKey) on delete cascade
 );
