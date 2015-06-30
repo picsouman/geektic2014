@@ -5,7 +5,7 @@ import com.ninja_squad.geektic.models.enums.UserSex;
 public class UserFilter {
 	
 	// FIELDS
-	private Hobbie hobbie;
+	private Long hobbie;
 	private UserSex sex;
 	
 	/**
@@ -19,11 +19,11 @@ public class UserFilter {
 	
 	
 	// AUTO-GENERATED
-	public Hobbie getHobbie() {
+	public Long getHobbie() {
 		return hobbie;
 	}
 
-	public void setHobbie(Hobbie hobbie) {
+	public void setHobbie(Long hobbie) {
 		this.hobbie = hobbie;
 	}
 

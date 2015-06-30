@@ -48,6 +48,10 @@ public class User {
 				inverseJoinColumns=@JoinColumn(name = "IdKeyHobbie"))
 	private List<Hobbie> userHobbies;
 
+	@OneToMany
+	@JoinColumn(name = "IdKeyUser")
+	private List<UserVisit> userVisits;
+
 
 
 	/**
@@ -125,5 +129,9 @@ public class User {
 	
 	public List<Hobbie> getUserHobbies() {
 		return userHobbies;
+	}
+	
+	public List<UserVisit> getUserVisits() {
+		return userVisits;
 	}
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ninja_squad.geektic.models.Hobbie;
 import com.ninja_squad.geektic.models.User;
+import com.ninja_squad.geektic.models.UserFilter;
 
 @Repository
 public class UserDAO {
@@ -77,5 +78,15 @@ public class UserDAO {
 				if(data.stream().allMatch(e -> e.getIdKey() != u.getIdKey()))
 					data.add(u);
 		return data;
+	}
+	
+	public void addUserVisit(long user, String ipAddress)
+	{
+		if(ipAddress == null) return;
+		if(ipAddress.length() > 40) return;
+		Query q = em.createQuery("INSERT INTO UserVisit(IdKeyUser, GuestIP) values (:id, :ip);");
+		q.setParameter("id", user);
+		q.setParameter("ip", ipAddress);
+		q.executeUpdate();
 	}
 }

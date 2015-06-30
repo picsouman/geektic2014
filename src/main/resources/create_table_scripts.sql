@@ -20,19 +20,19 @@ CREATE TABLE User (
 CREATE TABLE UserVisit (
 	IdKey bigint identity primary key not null,
 	IdKeyUser bigint not null,
-	GuestIP varchar(15) default null,
+	GuestIP varchar(40) default null,
 	Date timestamp default NOW not null,
 	constraint fk_uservisit_user foreign key (IdKeyUser) references User(IdKey) on delete cascade
 );
 
--- table des centres d'intérêt
+-- table des centres d'intï¿½rï¿½t
 create table Hobbie (
 	IdKey bigint identity primary key not null,
 	Label varchar(50) not null,
 	Description varchar(200) default null
 );
 
--- table des centres d'intérêt des utilisateurs
+-- table des centres d'intï¿½rï¿½t des utilisateurs
 CREATE TABLE UserHobbies (
 	IdKey bigint identity primary key not null,
 	IdKeyUser bigint not null,

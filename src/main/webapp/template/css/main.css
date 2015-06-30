@@ -27,3 +27,14 @@ body
 {
 	color: #EFFFFF;
 }
+
+#fastSearch {
+	margin: 5px;
+	padding: 10px;
+	border: 1px #EEE solid;
+	border-radius: 20px;
+}
+
+#userVisits {
+	text-size: 20em;
+}

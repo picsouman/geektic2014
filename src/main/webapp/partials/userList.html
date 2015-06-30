@@ -3,10 +3,12 @@
 		<th>Nom d'utilisateur</th>
 		<th>Sexe</th>
 		<th>Âge</th>
+		<th></th>
 	</tr>
 	<tr ng-repeat="user in userList">
 		<td>{{ user.userName }}</td>
 		<td>{{ user.userSex }}</td>
 		<td>{{ user.userAge }}</td>
+		<td><a href="#/userDetails/{{ user.idKey }}">Détails</a></td>
 	</tr>
 </table>

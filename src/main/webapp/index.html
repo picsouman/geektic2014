@@ -14,10 +14,27 @@
 	    		<h1>{{ helloMessage.message }}</h1>
 	    	</div>
 	    	
-	    	
 			<div id="content">
-				<div id="userList" ng-view="userList"></div>
-				<div id=userDetails" ng-view="userDetails"></div>
+				<div id="fastSearch">
+					<h1>Recherche rapide</h1>
+					<div ng-controller="userFilter">
+						<form novalidate>
+							<label for="hobbieListComponent">Centre d'intérêt</label> 
+							<select id="hobbieListComponent" ng-model="filter.hobbie" ng-options="x.idKey as x.label for x in hobbieList"></select><br/>
+							<label for="sexListComponent">Sexe</label> 
+							<select id="sexListComponent" ng-model="filter.sex">
+								<option value="MALE">Homme</option>
+								<option value="FEMALE">Femme</option>
+							</select><br/>
+							
+							<input type="submit" ng-click="filterLoad(filter)" value="Rechercher..." />
+						</form>
+					</div>
+				</div>
+				
+				<hr/>
+			
+				<div id="userList" ng-view></div>
 			</div>
 			
 		</div>
